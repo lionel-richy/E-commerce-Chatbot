@@ -4,27 +4,8 @@ from pathlib import Path
 from router import router
 from sql import sql_chain
 
- 
-
-
-
-
-
 
 faqs_path = Path(__file__).parent / "Ressources/faq_data.csv"
-
-
-def ask(query):
-    result = router(query)
-    print("Router result:", result)
-    route = getattr(result, "name", None)
-    if route == "faq":
-        return chain_faq(query)
-    elif route == "sql":
-        return sql_chain(query)
-    else:
-        return f"Route '{route}' is not implemented yet."
-
 
 ingest_faq_data(faqs_path)
 def ask(query):
